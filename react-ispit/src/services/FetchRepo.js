@@ -1,6 +1,4 @@
-export default function FetchRepo(input) {
-    return fetch(`https://api.github.com/users/${input}/repos`)
-        .then(response => {
-                return response.json();
-        })
+export default async function FetchRepo(input) {
+    const response = await fetch(`https://api.github.com/users/${input}/repos`);
+        return await response.json();
 }

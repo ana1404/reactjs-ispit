@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Figure, ListGroup, Button } from "react-bootstrap";
 
 const ButtonReset = () => {
     window.location.href = "/";
 }
 
-const Results = ({ json, repo }) => {
+function Results({ json, repo }){
   return (
     <>
       <Figure style={{display: "flex"}}>
@@ -36,12 +37,12 @@ const Results = ({ json, repo }) => {
           ? repo.map((e, index) => {
               return <ListGroup.Item key={index}>{e.name}</ListGroup.Item>;
             })
-          : console.log("bla bla")}
+          : console.log("Undefined ili prazno")}
       </ListGroup>
       <Button
         variant="primary"
         onClick={ButtonReset}
-        style={{ marginTop: "20px", width: "100%" }}
+        style={{ marginTop: "20px",marginBottom: "20px", width: "100%" }}
       >
         Reset
       </Button>
@@ -49,4 +50,8 @@ const Results = ({ json, repo }) => {
   );
 };
 
+Results.propTypes = {
+  json: PropTypes.object,
+  repo: PropTypes.array
+}
 export default Results;
